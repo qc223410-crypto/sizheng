@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>答题练习</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#question-title">跳到题目</a>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">本地题库练习</p>
+        <h1>答题练习网站</h1>
+      </div>
+      <div class="stats" aria-label="题库统计">
+        <span id="total-count">共 0 题</span>
+        <span id="wrong-count">错题 0 题</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel quiz-panel" aria-labelledby="question-title">
+        <section class="subject-picker" aria-labelledby="subject-title">
+          <label id="subject-title" for="subject-select">选择科目</label>
+          <select id="subject-select"></select>
+        </section>
+
+        <div class="toolbar" aria-label="练习模式">
+          <button class="mode-button active" id="all-mode" type="button">全部题目</button>
+          <button class="mode-button" id="wrong-mode" type="button">错题练习</button>
+          <button class="mode-button" id="exam-mode" type="button">模拟考试</button>
+        </div>
+
+        <section id="exam-result" class="exam-result" aria-live="polite" hidden></section>
+
+        <div class="question-meta">
+          <span id="mode-label">全部题目</span>
+          <span id="progress-label">第 1 / 1 题</span>
+          <span id="type-label">单选题</span>
+        </div>
+
+        <h2 id="question-title" tabindex="-1">正在加载题目...</h2>
+        <form id="answer-form" class="options" aria-describedby="hint feedback"></form>
+        <p id="hint" class="hint">单选题只能选择 1 项；多选题可选择多个选项。</p>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+
+        <div class="actions">
+          <button id="prev-question" class="secondary" type="button">上一题</button>
+          <button id="submit-answer" type="button">确认答案</button>
+          <button id="next-question" type="button" disabled>下一题</button>
+        </div>
+
+        <section class="answer-card" aria-labelledby="answer-card-title">
+          <div class="answer-card-header">
+            <h2 id="answer-card-title">答题卡</h2>
+            <p id="answer-card-summary">未答 0 题</p>
+          </div>
+          <div id="answer-card-list" class="answer-card-list" aria-label="题目跳转"></div>
+        </section>
+      </section>
+
+      <aside class="panel wrong-panel" aria-labelledby="wrong-title">
+        <div class="wrong-header">
+          <h2 id="wrong-title">错题本</h2>
+          <button id="clear-wrong" class="secondary" type="button">清空错题</button>
+        </div>
+        <p id="wrong-summary">暂无错题。</p>
+        <div id="wrong-list" class="wrong-list" aria-label="错题列表"></div>
+      </aside>
+    </main>
+
+    <script src="questions.js"></script>
+    <script src="questions-sizheng.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
